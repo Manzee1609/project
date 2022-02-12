@@ -4,11 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Login.js";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-// import app from "./firebase";
-// import 'firebase/compat/auth'
-// import db from './firebase'
-// import {} from 'firebase/auth'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {db, auth} from "./firebase"
 
 const Signup = () => {
 
@@ -22,9 +18,9 @@ const Signup = () => {
   
   const handleSubmit = (event) => {
     event.preventDefault()
-    const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, password)
-    // app.auth().createUserWithEmailAndPassword(email, password)
+  //  const auth = getAuth();
+// createUserWithEmailAndPassword(auth, email, password)
+     auth.createUserWithEmailAndPassword(email, password)
     .then(()=>{
     db.collection("User").add({
         email:email, 
@@ -34,6 +30,8 @@ createUserWithEmailAndPassword(auth, email, password)
         eid:eid,
         mno: mno,
         dept: dept
+      }).then(()=>{
+        console.log("Done!")
       })
     })
   }
