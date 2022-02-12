@@ -4,17 +4,40 @@ import { Link, NavLink } from "react-router-dom";
 import "./Login.js";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-import app from "./firebase";
-import 'firebase/compat/auth'
+// import app from "./firebase";
+// import 'firebase/compat/auth'
+// import db from './firebase'
+// import {} from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
+  const [fname, setfname] = useState("")
+  const [lname, setlname] = useState("")
+  const [eid, seteid] = useState("")
+  const [mno, setmno] = useState("")
+  const [dept, setdept] = useState("")
+  
   const handleSubmit = (event) => {
     event.preventDefault()
-    app.auth().createUserWithEmailAndPassword(email, password)
+    const auth = getAuth();
+createUserWithEmailAndPassword(auth, email, password)
+    // app.auth().createUserWithEmailAndPassword(email, password)
+    .then(()=>{
+    db.collection("User").add({
+        email:email, 
+        password: password,
+        fname: fname,
+        lname: lname,
+        eid:eid,
+        mno: mno,
+        dept: dept
+      })
+    })
   }
+
 
 
   //   const [user, setUser] = useState({
@@ -80,6 +103,7 @@ const Signup = () => {
                 // onChange={getUserData}
                 name="fname"
                 id="fname"
+                onChange={(e) => setfname(e.target.value)}
                 required
               />
 
@@ -94,6 +118,7 @@ const Signup = () => {
                 // onChange={getUserData}
                 name="lname"
                 id="lname"
+                onChange={(e) => setlname(e.target.value)}
                 required
               />
 
@@ -123,6 +148,7 @@ const Signup = () => {
                 // onChange={getUserData}
                 name="eid"
                 id="eid"
+                onChange={(e) => seteid(e.target.value)}
                 required
               />
 
@@ -137,6 +163,7 @@ const Signup = () => {
                 // onChange={getUserData}
                 name="dept"
                 id="dept"
+                onChange={(e) => setdept(e.target.value)}
                 required
               />
 
@@ -151,6 +178,7 @@ const Signup = () => {
                 // onChange={getUserData}
                 name="mno"
                 id="mno"
+                onChange={(e) => setmno(e.target.value)}
                 required
               />
 
@@ -197,6 +225,6 @@ const Signup = () => {
       <Footer />
     </>
   );
-};
+  };
 
 export default Signup;

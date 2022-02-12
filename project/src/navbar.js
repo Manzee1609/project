@@ -3,6 +3,7 @@ import './Events';
 import './Home';
 import {Link, NavLink} from "react-router-dom";
 import './contact'
+import './Profile'
 
 export default function Navbar(){
             return (
@@ -17,7 +18,7 @@ export default function Navbar(){
         <ul>
           <li><Link className="nav-link scrollto " to="/home">Home</Link></li>
           <li><Link className="nav-link scrollto" to="/events">Events</Link></li>
-          <li><Link className="nav-link scrollto" to="#">Profile</Link></li>
+          <li><Link className="nav-link scrollto" to="/profile">Profile</Link></li>
           <li><Link className="nav-link scrollto" to="/contact">Contact</Link></li>
           {/* <li><a className="nav-link scrollto" href="#events">Events</a></li>
           <li><a className="nav-link scrollto" href="#chefs">Chefs</a></li>

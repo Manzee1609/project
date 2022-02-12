@@ -22,6 +22,7 @@ import Admin from './admin';
 import Addevent from './addevent';
 import Updateevent from './updateevent';
 import Deleteevent from './deleteevent';
+import Profile from './Profile';
 // import { AuthProvider } from '../contexts/AuthContext'
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
     <Route path="/addevent" element={<Addevent/>}/>
     <Route path="/updateevent" element={<Updateevent/>}/>
     <Route path="/deleteevent" element={<Deleteevent/>}/>
+    <Route path="/profile" element={<Profile/>}/>
     
     </Routes>
     </>
